@@ -1,4 +1,4 @@
-package binary_search;
+package binary_search.one_d_arrays;
 
 public class LowerBound {
     public static void main(String[] args) {
