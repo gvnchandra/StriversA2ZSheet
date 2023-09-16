@@ -1,7 +1,5 @@
 package binary_search.one_d_arrays;
 
-import java.util.ArrayList;
-
 public class countOfOccurrences {
     public static void main(String[] args) {
         int x = 3;
