@@ -2,29 +2,27 @@ package recursion;
 
 public class PowOfXAndN {
     public static void main(String[] args) {
-        double x = 1.0 ;
+        double x = 1.0;
         int n = -2147483648;
         System.out.println(myPow(x, n));
     }
 
     public static double myPow(double x, int n) {
-        if (x==1)
+        if (x == 1)
             return x;
         // By using Binary Exponentiation
         double ans = 1.0;
         int nSign = 1 - 2 * (n > 0 ? 0 : 1);
-        if (nSign<0)
-            n*=nSign;
+        if (nSign < 0)
+            n *= nSign;
         while (n != 0) {
-            if ((n & 1) == 0) {
-                x = x * x;
-                n /= 2;
-            } else {
+            if ((n & 1) == 1) {
                 ans = ans * x;
-                n -= 1;
             }
+            x *= x;
+            n /= 2;
         }
-        return nSign<0? 1/ans:ans;
+        return nSign < 0 ? 1 / ans : ans;
     }
 
     public static double method1(double x, int n) {
