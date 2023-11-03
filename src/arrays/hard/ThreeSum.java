@@ -17,26 +17,24 @@ public class ThreeSum {
         List<List<Integer>> ans = new ArrayList<>();
         Arrays.sort(arr);
         for (int k = n - 1; k >= 2; k--) {
-            if (k == n - 1 || (k < n - 1 && arr[k] != arr[k + 1])) {
-                int i = 0, j = k - 1;
-                while (i < j) {
-                    if (arr[i] + arr[j] + arr[k] == 0) {
-                        ans.add(new ArrayList<>(Arrays.asList(arr[i], arr[j], arr[k])));
-                        while (i < j && arr[i] == arr[i + 1]) i++;
-                        while (i < j && arr[j] == arr[j - 1]) j--;
-                        i++;
-                        j--;
-                    } else if (arr[i] + arr[j] + arr[k] > 0) {
-                        while (i < j && arr[j] == arr[j - 1]) j--;
-                        j--;
+            if (k == n - 1 || arr[k] != arr[k + 1]) {
+                int l = 0, r = k - 1;
+                while (l < r) {
+                    if (arr[l] + arr[r] + arr[k] == 0) {
+                        ans.add(new ArrayList<>(Arrays.asList(arr[l], arr[r], arr[k])));
+                        while (l < r && arr[l] == arr[l + 1]) l++;
+                        while (l < r && arr[r] == arr[r - 1]) r--;
+                        l++;
+                        r--;
+                    } else if (arr[l] + arr[r] + arr[k] > 0) {
+                        r--;
                     } else {
-                        while (i < j && arr[i] == arr[i + 1]) i++;
-                        i++;
+                        l++;
                     }
                 }
             }
         }
-        ans.sort(Comparator.comparingInt(a -> a.get(0)));
+        //ans.sort(Comparator.comparingInt(e -> e.get(0)));
         return ans;
     }
 }
